@@ -1,0 +1,5 @@
+python-dotenv==0.20.0
+dbt-postgres==1.0.6
+SQLAlchemy==1.4.36
+psycopg2==2.9.3; platform_system == "Windows" or platform_system == "Linux"
+psycopg2-binary==2.9.3; platform_system == "Darwin" # Mac

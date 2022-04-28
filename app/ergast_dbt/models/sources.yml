@@ -1,0 +1,9 @@
+version: 2
+sources:
+ - name: ergast
+   schema: public
+   tables:
+     - name: races
+       identifier: races
+     - name: pitstops
+       identifier: pitstops
