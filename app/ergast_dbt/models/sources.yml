@@ -7,3 +7,9 @@ sources:
        identifier: races
      - name: pitstops
        identifier: pitstops
+     - name: results
+       identifier: results
+     - name: drivers
+       identifier: drivers
+     - name: constructors
+       identifier: constructors

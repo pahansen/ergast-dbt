@@ -19,7 +19,7 @@ final as (
 
     from pitstops p
     left join dim_races r 
-        on p."raceId" = r.race_id
+        on p."raceId"::varchar = r.race_id
 )
 
 select * from final

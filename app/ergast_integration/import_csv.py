@@ -5,6 +5,8 @@ Staging tables are resetted for each script run.
 import csv
 from app.config import ERGAST_CSV_FOLDER_PATH
 from app.ergast_integration.db.db_config import engine, Base, Session
+from app.ergast_integration.models.constructors import Constructor
+from app.ergast_integration.models.drivers import Driver
 from app.ergast_integration.models.races import Race
 from app.ergast_integration.models.pit_stops import Pitstop
 from app.ergast_integration.models.results import Result
@@ -32,7 +34,40 @@ with open(f"{ERGAST_CSV_FOLDER_PATH}/races.csv") as races:
                 url=row[7],
             )
         )
-    session.commit()
+
+# Import Drivers
+with open(f"{ERGAST_CSV_FOLDER_PATH}/drivers.csv") as drivers:
+    csvreader = csv.reader(drivers, delimiter=",")
+    next(csvreader, None)
+    for row in csvreader:
+        session.add(
+            Driver(
+                driverId=row[0],
+                driverRef=row[1],
+                number=row[2],
+                code=row[3],
+                forename=row[4],
+                surname=row[5],
+                dob=row[6],
+                nationality=row[7],
+                url=row[8]
+            )
+        )
+
+# Import Constructors
+with open(f"{ERGAST_CSV_FOLDER_PATH}/constructors.csv") as constructors:
+    csvreader = csv.reader(constructors, delimiter=",")
+    next(csvreader, None)
+    for row in csvreader:
+        session.add(
+            Constructor(
+                constructorId=row[0],
+                constructorRef=row[1],
+                name=row[2],
+                nationality=row[3],
+                url=row[4]
+            )
+        )
 
 # Import Pit Stops
 with open(f"{ERGAST_CSV_FOLDER_PATH}/pit_stops.csv") as races:
@@ -50,7 +85,6 @@ with open(f"{ERGAST_CSV_FOLDER_PATH}/pit_stops.csv") as races:
                 milliseconds=row[6],
             )
         )
-    session.commit()
 
 # Import Results
 with open(f"{ERGAST_CSV_FOLDER_PATH}/results.csv") as races:
@@ -79,4 +113,4 @@ with open(f"{ERGAST_CSV_FOLDER_PATH}/results.csv") as races:
                 statusId=row[17],
             )
         )
-    session.commit()
+session.commit()
