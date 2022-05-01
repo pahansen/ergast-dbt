@@ -10,12 +10,11 @@ dim_races as (
 
 final as (
     select 
-        r.race_sk, 
-        p.stop, 
-        p.lap, 
-        p.time, 
-        p.duration, 
-        p.milliseconds
+        r.race_sk::varchar, 
+        p.stop::int as stop_number, 
+        p.lap::int, 
+        p.time::varchar, 
+        p.milliseconds::int as duration_ms
 
     from pitstops p
     left join dim_races r 

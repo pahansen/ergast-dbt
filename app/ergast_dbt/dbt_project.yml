@@ -35,4 +35,4 @@ models:
     fct:
       +materialized: table
     int:
-      +materialized: view
+      +materialized: table
