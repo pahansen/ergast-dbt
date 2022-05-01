@@ -12,4 +12,6 @@ Once the database is ready and you have installed the requirements from app/requ
 
 Alternatively, you can also choose to import the CSV files with SQL and skip the Python part.
 
+Finally, remember to set up your dbt profile for this project including the credentials to the PostgreSQL database.
+
 
